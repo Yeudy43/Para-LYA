@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+
+body {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   font-family: ' Bold 1', cursive;
+   background-color: #f1e3d3;
+   overflow: hidden;
+}
+
+#card {
+   height: 600px; /* Mayor altura para acomodar más texto */
+   width: 800px;
+   margin: 5em auto;
+   position: fixed;
+   top: -15px;
+   left: 25%;
+   display: flex;
+   visibility: hidden;
+}
+
+#card h2 {
+   font-size: 3em;
+   margin: 0;
+   color: pink;
+   text-align: center;
+}
+
+#card p {
+   font-size: 1.2em; /* Fuente más compacta */
+   line-height: 1.5em; /* Mejor legibilidad */
+   text-align: justify;
+   padding-left: 20px;
+   padding-right: 20px;
+   margin-bottom: 1em;
+}
+
+.side {
+   background: #eee;
+   height: 600px; /* Coincide con #card */
+   width: 400px;
+   padding: 10px;
+   box-sizing: border-box;
+}
+
+.side.one {
+   width: 320px;
+   transform: skew(10deg, 20deg);
+   background: linear-gradient(90deg, #fff, #fff 40%, #ddd);
+}
+
+.side.two {
+   transform: skew(10deg, -15deg);
+   background: linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
+   overflow-y: auto; /* Permite scroll vertical si el texto es largo */
+   padding: 20px;
+}
+
+.valentines-day {
+   position: relative;
+   cursor: pointer;
+}
+
+.envelope {
+   position: relative;
+   filter: drop-shadow(0 0 25px rgba(0,0,0,.3));
+}
+
+.envelope:before {
+   content:"";
+   position: absolute;
+   width:254px;
+   height:254px;
+   background-color: #ff9494;
+   transform: rotate(-45deg);
+   border-radius: 0 15px 0 0;
+   left:-37px;
+   top:-82px;
+}
+
+.envelope:after {
+   content:"";
+   position: absolute;
+   background-color: #ff9494;
+   width:360px;
+   height:225px;
+   left:-90px;
+   top:45px;
+}
+
+.heart {
+   position: relative;
+   background-color: #e01911;
+   display: inline-block;
+   height: 180px;
+   top:50px;
+   left:0;
+   transform: rotate(-45deg);
+   width:180px;
+   filter: drop-shadow(0 -10px 25px rgba(0,0,0,.3));
+   transition: .5s;
+}
+
+.heart:before, .heart:after {
+   content:"";
+   background-color: #e01911;
+   border-radius:50%;
+   height: 180px;
+   width: 180px;
+   position: absolute;
+}
+
+.heart:before {
+   top:-100px;
+   left:0;
+}
+
+.heart:after {
+   left:100px;
+   top:0;
+}
+
+.front {
+   position: absolute;
+   width:0;
+   height:0;
+   border-right: 190px solid #fbd2d2;
+   border-top: 113px solid transparent;
+   border-bottom: 113px solid transparent;
+   top:44px;
+   left:80px;
+   z-index:4;
+}
+
+.front:before {
+   content:"";
+   position: absolute;
+   width:0;
+   height:0;
+   border-left: 190px solid #fbd2d2;
+   border-top: 113px solid transparent;
+   border-bottom: 113px solid transparent;
+   top:-113px;
+   left:-170px;
+}
+
+.front:after {
+   width:0;
+   height:0;
+   position: absolute;
+   content:"";
+   border-bottom: 150px solid #fce7e9;
+   border-right:180px solid transparent;
+   border-left: 180px solid transparent;
+   top:-36px;
+   left:-170px;
+}
+
+.text {
+   position: absolute;
+   font-family: arial;
+   letter-spacing: 5px;
+   text-align: center;
+   color: white;
+   z-index: 2;
+   top: 80px;
+   left: 15px;
+   transition: .5s;
+}
+
+.valentines-day:hover .heart {
+   transform: translateY(-50px) rotate(-45deg);
+}
+
+.valentines-day:hover .text {
+   transform: translateY(-50px);
+}
+@media screen and (max-width: 600px) {
+   /* Carta */
+   #card {
+       flex-direction: column;  /* apila las dos caras */
+       width: 95%;              /* ancho casi completo de la pantalla */
+       max-width: 400px;        /* evita que sea demasiado ancha */
+       height: auto;            /* altura automática según el contenido */
+       position: relative;      /* ya no fixed */
+       top: 0;
+       left: 0;
+   }
+
+   /* Lados de la carta */
+   .side {
+       width: 100%;             /* ocupa todo el ancho */
+       height: auto;            /* altura según contenido */
+       transform: none;         /* elimina skew, queda recto */
+       margin-bottom: 20px;
+       padding: 15px;
+   }
+
+   #card h2 {
+       font-size: 2em;
+       text-align: center;
+   }
+
+   #card p {
+       font-size: 1em;
+       line-height: 1.4em;
+       padding-left: 10px;
+       padding-right: 10px;
+   }
+
+   /* Sobre y corazón */
+   .valentines-day {
+       transform: scale(0.7); /* reduce tamaño */
+   }
+
+   .heart {
+       width: 100px;
+       height: 100px;
+       top: 20px;
+   }
+
+   .heart:before,
+   .heart:after {
+       width: 100px;
+       height: 100px;
+   }
+
+   .front {
+       transform: scale(0.7);
+   }
+
+   .text {
+       font-size: 0.8em;
+       top: 40px;
+       left: 5px;
+   }
+}
